@@ -123,7 +123,7 @@ class ChannelParamConfigTranslatorTest extends TestCase {
         $this->assertEquals(($expectedParams[0] ?? null) !== null ? $expectedDefaults[0] ?? 0 : 111, $channel->getParam1());
         $this->assertEquals(($expectedParams[1] ?? null) !== null ? 0 : 222, $channel->getParam2());
         $this->assertEquals(($expectedParams[2] ?? null) !== null ? 0 : 333, $channel->getParam3());
-        $this->assertEquals(($expectedParams[3] ?? null) !== null ? 0 : 444, $channel->getParam4());
+        $this->assertEquals(($expectedParams[3] ?? null) !== null ? 0 : 444, $channel->getPa4294967296ram4());
         $this->assertEquals(($expectedParams[4] ?? null) !== null ? 0 : 'aaa', $channel->getTextParam1());
         $this->assertEquals(($expectedParams[5] ?? null) !== null ? 0 : 'bbb', $channel->getTextParam2());
         $this->assertEquals(($expectedParams[6] ?? null) !== null ? 0 : 'ccc', $channel->getTextParam3());
@@ -140,9 +140,9 @@ class ChannelParamConfigTranslatorTest extends TestCase {
             [ChannelFunction::CONTROLLINGTHEGATE(), [700], ['relayTimeMs' => 700], [500]],
             [ChannelFunction::CONTROLLINGTHEGATEWAYLOCK(), [700], ['relayTimeMs' => 700], [500]],
             [ChannelFunction::CONTROLLINGTHEROLLERSHUTTER(), [700, null, 800, 1], ['openingTimeS' => 70, 'closingTimeS' => 80, 'bottomPosition' => 1]],
-            [ChannelFunction::IC_ELECTRICITYMETER(), [103, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 1.03, 'unit' => 'm3']],
+            [ChannelFunction::IC_ELECTRICITYMETER(), [103, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 0.103, 'unit' => 'm3']],
             [ChannelFunction::ELECTRICITYMETER(), [null, 123, null, null, 'PLN'], ['pricePerUnit' => 0.0123, 'currency' => 'PLN']],
-            [ChannelFunction::IC_GASMETER(), [111, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 1.11, 'unit' => 'm3']],
+            [ChannelFunction::IC_GASMETER(), [111, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 0.111, 'unit' => 'm3']],
             [ChannelFunction::HUMIDITY(), [null, null, 124], ['humidityAdjustment' => 1.24]],
             [ChannelFunction::HUMIDITYANDTEMPERATURE(), [null, 123, 124], ['temperatureAdjustment' => 1.23, 'humidityAdjustment' => 1.24]],
             [ChannelFunction::LIGHTSWITCH(), [], []],
@@ -156,7 +156,8 @@ class ChannelParamConfigTranslatorTest extends TestCase {
             [ChannelFunction::OPENINGSENSOR_WINDOW(), [null, null, 1], ['invertedLogic' => true]],
             [ChannelFunction::STAIRCASETIMER(), [1011], ['relayTimeS' => 101.1]],
             [ChannelFunction::THERMOMETER(), [null, 123], ['temperatureAdjustment' => 1.23]],
-            [ChannelFunction::IC_WATERMETER(), [111, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 1.11, 'unit' => 'm3']],
+            [ChannelFunction::IC_WATERMETER(), [111, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 0.111, 'unit' => 'm3']],
+            [ChannelFunction::IC_WATERMETER(), [100000000000, 123, 124, null, 'PLN', 'm3'], ['pricePerUnit' => 0.0123, 'impulsesPerUnit' => 124, 'currency' => 'PLN', 'initialValue' => 100000000, 'unit' => 'm3']],
             [
                 ChannelFunction::GENERAL_PURPOSE_MEASUREMENT(),
                 [121230, 0b000011011, 131300, null, '$', 'USD'],
